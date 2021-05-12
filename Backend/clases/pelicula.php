@@ -25,17 +25,17 @@ class pelicula
         $stmt->execute();
         $row = $stmt->fetchAll(PDO::FETCH_CLASS);
 
-       return $row;
+        return $row;
     }
 }
-    public function crearDatos($con, $idpelicula, $nombre, $img, $activo){
-        $sql = "INSERT INTO pelicula VALUES ($idpelicula , $nombre, $img, $activo)";
-        echo $sql;
-        if(  mysqli_query($con, $sql)){
-            echo "ando";
-        }else{
-                echo mysqli_error($con);
-            }
+function crearDatos($con, $idpelicula, $nombre, $img, $activo)
+{
+    $sql = "INSERT INTO pelicula VALUES ($idpelicula , $nombre, $img, $activo)";
+    echo $sql;
+    if (mysqli_query($con, $sql)) {
+        echo "ando";
+    } else {
+        echo mysqli_error($con);
     }
 }
- $pelicula = new pelicula()
+$pelicula = new pelicula();
