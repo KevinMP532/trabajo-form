@@ -4,6 +4,7 @@ class pelicula {
     public $id;
     public $img;
     public $activo;
+    private $conn;
 
     public function __construct()
     {
@@ -13,7 +14,11 @@ class pelicula {
         $this->activo="";
         
     }
-
+    
+    public function __construct($db)
+    {
+        $this->conn = $db;
+    }
     public function obtenerDatos($con, $idpelicula){
         $query = "SELECT * FROM pelicula WHERE idPelicula =". $idpelicula;
         $resultado = mysqli_query($con,$query) or die('Consulta fallida: ' . mysqli_error($con));

@@ -1,25 +1,22 @@
-<?php 
-    class BD {
-        public $host;
-        public $user;
-        public $pw;
-        public $dataBase;
-        public $conn;
-        
-        public function __construct()
-        {
-            $this->host="localhost";
-            $this->user="root";
-            $this->pw="";
-            $this->dataBase="Peliculas";
-            $this->conn=new mysqli($this->host,$this->user,$this->pw,$this->dataBase);
-            if ($this->conn->connect_errno)
-            {
-                echo "fallo la conexion";
-            }
+<?php
+class BD{
 
+    private $host = "localhost";
+    private $db_name = "peliculas";
+    private $username = "root";
+    private $password = "";
+    public $conn;
+
+    public function getConnection(){
+
+        $this->conn = null;
+        try{
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->exec("set names utf8");
+        }catch(PDOException $exception){
+            echo "Connection error: " . $exception->getMessage();
         }
+        return $this->conn;
     }
-    
-    $CONNECT=new BD();
+}
 ?>
