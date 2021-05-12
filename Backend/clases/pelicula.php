@@ -14,6 +14,20 @@ class pelicula {
         $this->activo="";
         
     }
+    function conexion()
+    {
+        $query = "SELECT * FROM usuario WHERE idUsuario = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->id);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row != null) {
+            $this->id = $row['idpelicula'];
+            $this->nombre = $row['nombre'];
+        }
+    }
+
     
     public function __construct($db)
     {

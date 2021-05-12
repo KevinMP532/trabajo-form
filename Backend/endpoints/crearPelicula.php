@@ -11,19 +11,21 @@ $database = new BD();
 $db = $database->getConnection();
 $pelicula = new pelicula($db);
 $data = json_decode(file_get_contents("php://input"));
-$user->idUsuario = $data->idUsuario;
-$user->login();
+$pelicula->idpelicula = $data->idpelicula;
+$pelicula->login();
 
-if($user->nombre!=null){
-    $user_arr = array(
-        "idUsuario" => $user->idUsuario,
-        "nombre" => $user->nombre
+if($pelicula->nombre!=null){
+    $pelicula_arr = array(
+        "idpelicula" => $pelicula->idpelicula,
+        "nombre" => $pelicula->nombre
     );
     http_response_code(200);
-    echo json_encode($user_arr);
+    echo json_encode($pelicula_arr);
 }
 else{
     http_response_code(200);
-    echo json_encode(array("message" => "User does not exist."));
+    echo json_encode(array("message" => "pelicula does not exist."));
 }
+
+
 ?>
