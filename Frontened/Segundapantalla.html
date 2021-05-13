@@ -1,9 +1,13 @@
+<a href="pantalla.html"><h1>Peliculas.com</h1></a>
 <h2>Añade una pelicula!</h2>
 
-<form action="/pantalla.html">
-  <label for="npeli">Nombre de la pelicula:</label><br>
-  <input type="text" id="npeli" name="npeli" value=""><br>
-  <label for="fpeli">Inserta la foto de la pelicula:</label><br>
-  <input type="image" id="lname" name="fpeli" value=""><br><br>
-  <input type="submit" value="Submit">
+<form id="myForm" action="">
+  Nombre de la pelicula: <input type="text" name="pname"><br>
+  <p></p>
+  
+  Inserte foto de la pelicula: <input type="file" name="fpeli">	
+  <p></p>
+  <input type="button" onclick="myFunction()" value="Agregar Pelicula">
+</form>
 </form> 
+<script src="script.js"></script>
