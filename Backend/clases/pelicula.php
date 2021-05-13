@@ -2,7 +2,7 @@
 class pelicula
 {
     public $nombre;
-    public $id;
+    public $idPelicula;
     public $img;
     public $activo;
     private $conn;
@@ -27,15 +27,17 @@ class pelicula
 
         return $row;
     }
-}
-function crearDatos($con, $idpelicula, $nombre, $img, $activo)
-{
-    $sql = "INSERT INTO pelicula VALUES ($idpelicula , $nombre, $img, $activo)";
-    echo $sql;
-    if (mysqli_query($con, $sql)) {
-        echo "ando";
-    } else {
-        echo mysqli_error($con);
+
+    function crearDatos()
+    {
+        $sql = "INSERT INTO pelicula SET idPelicula = :idpelicula, nombre = :Nombre, img = :Img, activo = :Activo";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':idpelicula', $this->idPelicula);
+        $stmt->bindParam(':Nombre', $this->nombre);
+        $stmt->bindParam(':Img', $this->img);
+        $stmt->bindParam(':Activo', $this->activo);
+        $stmt->execute();
+        return "algo";
     }
 }
-$pelicula = new pelicula();
+
