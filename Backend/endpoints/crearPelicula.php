@@ -11,19 +11,12 @@ $database = new BD();
 $db = $database->getConnection();
 $pelicula = new pelicula($db);
 $data = json_decode(file_get_contents("php://input"));
-$user->idUsuario = $data->idUsuario;
-$user->login();
+$pelicula->idPelicula = $data->idpelicula;
+$pelicula->nombre = $data->Nombre;
+$pelicula->img = $data->Img;
+$pelicula->activo = $data->Activo;
+$pepe = $pelicula->crearDatos();
 
-if($user->nombre!=null){
-    $user_arr = array(
-        "idUsuario" => $user->idUsuario,
-        "nombre" => $user->nombre
-    );
     http_response_code(200);
-    echo json_encode($user_arr);
-}
-else{
-    http_response_code(200);
-    echo json_encode(array("message" => "User does not exist."));
-}
+    echo json_encode($pepe);
 ?>
