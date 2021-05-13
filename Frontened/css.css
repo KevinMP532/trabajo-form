@@ -10,3 +10,7 @@
     position:relative;
 }
 h1 {text-align: center;}
+#imgbox{
+height:100px;
+width:100px;
+}
