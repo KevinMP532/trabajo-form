@@ -1,16 +1,16 @@
 
- function myFunction() {
-   
+function myFunction() {
   axios({
     method: 'POST',
-    url: 'http://localhost/trabajo-form/Backend/endpoints/visualizarPeliculas.php',
-    data: {
-      id: "xd"
-    }
+    url: 'http://localhost/trabajo-form/Backend/endpoints/visualizarPeliculas.php'
   }).then(response => {
 
-    return response
 
+
+
+    console.log(response)
+
+  }).catch(function (error) {
+    console.log(error);
   })
 }
-console.log(myFunction())
