@@ -1,16 +1,34 @@
 
-function sexo() {
+function Print() {
   axios({
     method: 'POST',
     url: 'http://localhost/trabajo-form/Backend/endpoints/visualizarPeliculas.php'
   }).then(response => {
     for(let i=0;i < response.data.length;i++ ){
-      let lulu = document.getElementById("imgbox")
-      lulu.innerHTML = response.data[i].img
+      var div = document.createElement('div'+i)
+      div.class = "a"
       var html = ""
+      document.getElementById("imgbox").appendChild(div);
       html+='<div>'+response.data[i].nombre+'</div>';
-      document.getElementById('imgbox').innerHTML+= html
-      return(response.data[i])
+      //document.getElementById('div'+i).innerHTML = '<img src="'+ response.data[i].img+'/>' 
+      for(let p=0;i < response.data.length;i++ ){
+        var tag = document.createElement("p");
+        var text = document.createTextNode(response.data[i].nombre);
+        tag.appendChild(text)
+        div.appendChild(tag)
+        tag.class = "eso"
+        var div = document.createElement('div');
+        div.class = "div"+i
+        var img = document.createElement('img'); 
+        img.src = response.data[i].img;    
+        img.height = 100;
+        img.width =100; 
+        img.id = "imagen"   
+        div.width = img.width
+        div.height = img.height   
+        document.body.appendChild(div);   
+        div.appendChild(img);  
+      }
     }
 
 
