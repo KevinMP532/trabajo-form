@@ -41,7 +41,7 @@ function CrearPelicula(){
 let datos = new FormData(form);
   axios({
     method: 'POST',
-    url: 'http://localhost/trabajo-form/Backend/endpoints/visualizarPeliculas.php',
+    url: 'http://localhost/trabajo-form/Backend/endpoints/crearPelicula.php',
     body: {
       idpelicula: datos.get("idpeli"),
       Nombre: datos.get("pname"),
@@ -49,7 +49,7 @@ let datos = new FormData(form);
       Activo: datos.get("estadopeli")
     }
   }).then(response => {
-
+console.log (response)
   }).catch(function (error) {
     console.log(error);
   })
