@@ -42,7 +42,7 @@ let datos = new FormData(form);
   axios({
     method: 'POST',
     url: 'http://localhost/trabajo-form/Backend/endpoints/crearPelicula.php',
-    body: {
+    data: {
       idpelicula: datos.get("idpeli"),
       Nombre: datos.get("pname"),
       Img: datos.get("linkpeli"),
